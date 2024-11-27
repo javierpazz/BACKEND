@@ -37,7 +37,7 @@ try {
     }, 0 );
 
 
-    const taxRate = 0 ;
+    const taxRate = 0.10 ;
     const backendTotal = subTotal * ( taxRate + 1 );
 
     if ( total !== backendTotal ) {
