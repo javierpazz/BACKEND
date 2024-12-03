@@ -13,6 +13,28 @@ const getOrders = async( req, res = response ) => {
     });
 }
 
+const getOrderByUs = async( req, res = response ) => {
+    console.log(req.query.id)
+    console.log("req.query.id")
+    const { id } = req.query.id;
+
+    // if ( !isValidObjectId(id) ){
+    //     return null;
+    // }
+
+    const orders = await Order.find({user: id} ).lean();
+ 
+    if ( !orders ) {
+        return null;
+    }
+
+    return res.status(200).json( orders );
+    // return JSON.parse(JSON.stringify(order));
+
+}
+
+
+
 const crearOrder = async ( req, res = response ) => {
 
     /////////////////////////////////
@@ -153,5 +175,6 @@ module.exports = {
     getOrders,
     crearOrder,
     actualizarOrder,
-    eliminarOrder
+    eliminarOrder,
+    getOrderByUs
 }

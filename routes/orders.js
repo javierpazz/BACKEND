@@ -8,7 +8,7 @@ const { check } = require('express-validator');
 const { isDate } = require('../helpers/isDate');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
-const { getOrders, crearOrder, actualizarOrder, eliminarOrder } = require('../controllers/orders');
+const { getOrderByUs, getOrders, crearOrder, actualizarOrder, eliminarOrder } = require('../controllers/orders');
 
 const router = Router();
 
@@ -18,6 +18,11 @@ router.use( validarJWT );
 
 // Obtener Orders 
 router.get('/', getOrders );
+
+
+// // Obtener Orders by User
+// router.get('/:id', getOrderByUs );
+
 
 // Crear un nuevo Order
 router.post(
