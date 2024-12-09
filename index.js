@@ -24,22 +24,21 @@ app.use( express.static('public') );
 app.use( express.json() );
 
 // Rutas
-app.use('/api/user', require('./routes/auth') );
-app.use('/api/admin', require('./routes/admadmin') );
-app.use('/api/admin/users', require('./routes/admusers') );
-app.use('/api/admin/products', require('./routes/admproducts') );
-app.use('/api/admin/upload', require('./routes/admproductsupload') );
-app.use('/api/admin/orders', require('./routes/admorders') );
-// app.use('/api/events', require('./routes/events') );
-app.use('/api/seed', require('./routes/seed') );
-app.use('/api/search', require('./routes/searchPro') );
-app.use('/api/productbyslug', require('./routes/productbyslug') );
-app.use('/api/productbysear', require('./routes/productbysear') );
-app.use('/api/product', require('./routes/product') );
-app.use('/api/products', require('./routes/products') );
-app.use('/api/orders', require('./routes/orders') );
-app.use('/api/orderbyid', require('./routes/orderbyid') );
-app.use('/api/ordersbyus', require('./routes/ordersbyus') );
+app.use('/api/tes/user', require('./routes/auth') );
+app.use('/api/tes/admin', require('./routes/admadmin') );
+app.use('/api/tes/admin/users', require('./routes/admusers') );
+app.use('/api/tes/admin/products', require('./routes/admproducts') );
+// app.use('/api/admin/upload', require('./routes/admproductsupload') );
+app.use('/api/tes/admin/orders', require('./routes/admorders') );
+ app.use('/api/tes/seed', require('./routes/seed') );
+//ooo app.use('/api/search', require('./routes/searchPro') );
+//ooo app.use('/api/productbyslug', require('./routes/productbyslug') );
+//ooo app.use('/api/productbysear', require('./routes/productbysear') );
+//ooo app.use('/api/product', require('./routes/product') );
+app.use('/api/tes/products', require('./routes/products') );
+app.use('/api/tes/orders', require('./routes/orders') );
+//ooo app.use('/api/orderbyid', require('./routes/orderbyid') );
+//ooo app.use('/api/ordersbyus', require('./routes/ordersbyus') );
 
 //////////////////dfdfdf
 

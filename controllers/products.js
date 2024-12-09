@@ -31,7 +31,50 @@ const getProducts = async( req, res = response ) => {
 }
 
 
+const getProductBySlug = async( req, res = response ) => {
+
+    const { slug } = req.params;
+    const product = await Product.findOne({ slug }).lean();
+ 
+    if( !product ) {
+        return res.status(404).json({
+            message: 'Producto no encontrado'
+        })
+    }
+
+    return res.json( product );
+
+
+}
+
+
+const getProductBySear = async( req, res = response ) => {
+    console.log(req.params)
+    const  term  = req.params.term;
+    
+    const products = await Product.find({
+        $text: { $search: term }
+    })
+    .select('title images price inStock slug -_id')
+    .lean();
+
+
+
+    if( !products ) {
+        return res.status(404).json({
+            message: 'Producto no encontrado'
+        })
+    }
+
+    
+
+    return res.status(200).json( products );
+
+}
+
 
 module.exports = {
     getProducts,
+    getProductBySlug,
+    getProductBySear,
 }

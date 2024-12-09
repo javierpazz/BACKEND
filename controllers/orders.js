@@ -13,16 +13,36 @@ const getOrders = async( req, res = response ) => {
     });
 }
 
-const getOrderByUs = async( req, res = response ) => {
-    console.log(req.query.id)
-    console.log("req.query.id")
-    const { id } = req.query.id;
+const getOrderById = async( req, res = response ) => {
+
+    const { id } = req.params;
 
     // if ( !isValidObjectId(id) ){
     //     return null;
     // }
 
-    const orders = await Order.find({user: id} ).lean();
+    const order = await Order.findById( id ).lean();
+ 
+    if ( !order ) {
+        return null;
+    }
+
+    return res.status(200).json( order );
+    // return JSON.parse(JSON.stringify(order));
+
+}
+
+
+const getOrdersByUs = async( req, res = response ) => {
+    console.log(req);
+    const  id  = req.params.id;
+    const orders = await Order.find({ user : id }).lean();
+    return res.status(200).json( orders );
+
+    // if ( !isValidObjectId(id) ){
+    //     return null;
+    // }
+
  
     if ( !orders ) {
         return null;
@@ -176,5 +196,6 @@ module.exports = {
     crearOrder,
     actualizarOrder,
     eliminarOrder,
-    getOrderByUs
+    getOrdersByUs,
+    getOrderById
 }

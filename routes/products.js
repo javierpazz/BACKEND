@@ -8,7 +8,7 @@ const { check } = require('express-validator');
 // const { isDate } = require('../helpers/isDate');
 // const { validarCampos } = require('../middlewares/validar-campos');
 // const { validarJWT } = require('../middlewares/validar-jwt');
-const { getProducts, getProductsByGener } = require('../controllers/products');
+const { getProducts, getProductBySlug, getProductBySear } = require('../controllers/products');
 
 const router = Router();
 
@@ -18,6 +18,13 @@ const router = Router();
 
 // Obtener productos
 router.get('/', getProducts );
+
+// Obtener productos by slug
+router.get('/:slug', getProductBySlug );
+
+
+// Obtener productos
+router.get('/getproductsbysear/:term', getProductBySear );
 
 
 
