@@ -1,6 +1,7 @@
 const { response } = require('express');
 const { isValidObjectId } = require('mongoose');
 const Product = require('../models/productModel');
+const { v2 : cloudinary } = require ('cloudinary');
 
 const getProducts = async( req, res = response ) => {
 
@@ -40,7 +41,7 @@ const updateProduct = async(req, res) =>  {
                 // Borrar de cloudinary
                 const [ fileId, extension ] = image.substring( image.lastIndexOf('/') + 1 ).split('.')
                 console.log({ image, fileId, extension });
-                // await cloudinary.uploader.destroy( fileId );
+                await cloudinary.uploader.destroy( fileId );
             }
         });
 

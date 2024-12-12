@@ -25,6 +25,7 @@ const getProducts = async( req, res = response ) => {
                                 .select('title images price inStock slug -_id')
                                 .lean();
 
+                                
 
     return res.status(200).json( products );
 
@@ -41,6 +42,7 @@ const getProductBySlug = async( req, res = response ) => {
             message: 'Producto no encontrado'
         })
     }
+
 
     return res.json( product );
 
@@ -65,6 +67,8 @@ const getProductBySear = async( req, res = response ) => {
             message: 'Producto no encontrado'
         })
     }
+
+
 
     
 
